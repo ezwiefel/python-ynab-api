@@ -1,0 +1,2 @@
+environs~=9.3.2
+pytest~=6.2.4
