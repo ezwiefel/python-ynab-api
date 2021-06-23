@@ -109,7 +109,8 @@ class Transaction:
             "category_id": self.category_id if len(self.subtransactions) == 0 else None,
             "subtransactions": [s.save_sub_transaction for s in self.subtransactions],
             "memo": self.memo,
-            "flag_color": self.flag_color
+            "flag_color": self.flag_color,
+            "cleared": self.cleared
         }
 
         if self.payee_id:
