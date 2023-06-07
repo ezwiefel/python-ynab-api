@@ -1,26 +1,30 @@
 # Copyright (c) 2021 Erik Zwiefel
-# 
+#
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
 import requests
+from typing import Optional
 
 
 class RESTBase(object):
-
     def __init__(self, **kwargs):
-        self._host = kwargs.pop('host')
-        self._api_version = kwargs.pop('api_version')
+        self._host = kwargs.pop("host")
+        self._api_version = kwargs.pop("api_version")
         self._uri = f"{self._host}/{self._api_version}/"
-        self._token = kwargs.pop('token')
-        self.parent = kwargs.get('parent', None)
-        self._headers = {'Authorization': f'Bearer {self._token}'}
-        self._rest_call = {'GET': self.__get,
-                           'POST': self.__post,
-                           'PATCH': self.__patch,
-                           'PUT': self.__put}
+        self._token = kwargs.pop("token")
+        self.parent = kwargs.get("parent", None)
+        self._headers = {"Authorization": f"Bearer {self._token}"}
+        self._rest_call = {
+            "GET": self.__get,
+            "POST": self.__post,
+            "PATCH": self.__patch,
+            "PUT": self.__put,
+        }
 
-    def __get(self, api_endpoint: str, params: dict = None) -> requests.Response:
+    def __get(
+        self, api_endpoint: str, params: Optional[dict] = None
+    ) -> requests.Response:
         """
         Send HTTP GET request to REST API endpoint with data as query string
         :param api_endpoint: string : The api endpoint to be called - after version number

@@ -1,5 +1,5 @@
 # Copyright (c) 2021 Erik Zwiefel
-# 
+#
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
@@ -21,7 +21,7 @@ class YNABBudgetClient(object):
             "api_version": self.API_VERSION,
             "budget_id": self.budget_id,
             "token": pat_token,
-            "parent": self
+            "parent": self,
         }
 
         self.categories = CategoriesAPI(**api_kwargs)
