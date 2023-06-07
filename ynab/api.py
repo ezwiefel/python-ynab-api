@@ -9,7 +9,7 @@ from ynab.__transactions import TransactionAPI
 
 
 class YNABBudgetClient(object):
-    BASE_URL = "https://api.youneedabudget.com/"
+    BASE_URL = "https://api.ynab.com"
     API_VERSION = "v1"
 
     def __init__(self, budget_id: str, pat_token: str, **kwargs) -> None:
