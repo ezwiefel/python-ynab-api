@@ -9,5 +9,5 @@ setup(
     author='Erik Zwiefel',
     author_email='erik.zwiefel@live.com',
     description='YNAB API',
-    install_requires=['requests==2.25.1']
+    install_requires=['requests>=2.31.0']
 )
