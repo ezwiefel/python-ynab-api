@@ -60,7 +60,7 @@ class AccountsAPI(RESTBase):
 
     def get_all(self):
         method = "GET"
-        api_path = self._budget_uri + f"accounts/"
+        api_path = self._budget_uri + f"accounts"
 
         resp = self._rest_call[method](api_path)
 
