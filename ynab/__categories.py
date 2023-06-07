@@ -31,7 +31,10 @@ class Category:
             else:
                 unknown_args[key] = value
 
-        return cls(**known_args, category_group_name=category_name, meta=unknown_args)
+        if not known_args["category_group_name"]:
+            known_args["category_group_name"] = category_name
+
+        return cls(**known_args, meta=unknown_args)
 
     def __repr__(self):
         return (
@@ -80,3 +83,18 @@ class CategoriesAPI(RESTBase):
             ret_val = None
 
         return ret_val
+
+    def to_dict(self) -> list[dict[str, str]]:
+        categories = self.get_all()
+        return_list = []
+
+        for category in categories:
+            if category.category_group_name != "Internal Master Category":
+                return_list.append(
+                    {
+                        "name": category.name,
+                        "id": category.id,
+                    }
+                )
+        
+        return return_list
